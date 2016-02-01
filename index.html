@@ -36,6 +36,7 @@
 
 'use strict';
 
+const EXP_LABEL = /^([^,]+)\s*:\s*/;
 const EXP_DELIMITER_DIMENSIONS = /(?:\r?\n)+/g;
 const EXP_DELIMITER_ITEMS = /,\s*/g;
 
@@ -51,13 +52,34 @@ function getInput () {
 	return inputElement.value;
 }
 
-function getValuesFromLine (line) {
-	return line.split(EXP_DELIMITER_ITEMS).filter(filterOutEmpty);
+function getLinesFromInput (input) {
+	return input
+		.split(EXP_DELIMITER_DIMENSIONS)
+		.filter(filterOutEmpty);
 }
 
-function getValuesFromInput (input) {
-	const lines = input.split(EXP_DELIMITER_DIMENSIONS).filter(filterOutEmpty);
+function getValuesFromLine (line) {
+	return line
+		.split(EXP_LABEL)
+		.pop()
+		.split(EXP_DELIMITER_ITEMS)
+		.filter(filterOutEmpty);
+}
+
+function getLabelFromLine (line) {
+	const match = line.match(EXP_LABEL);
+	if (!match) {
+		return null;
+	}
+	return match[1];
+}
+
+function getValuesFromLines (lines) {
 	return lines.map(getValuesFromLine);
+}
+
+function getLabelsFromLines (lines) {
+	return lines.map(getLabelFromLine);
 }
 
 function arrayConcat (a, b) {
@@ -79,20 +101,37 @@ function getCombinations (values) {
 }
 
 function displayInput (input) {
-	const values = getValuesFromInput(input);
-	displayValues(values);
+	const lines = getLinesFromInput(input);
+	const values = getValuesFromLines(lines);
+	const labels = getLabelsFromLines(lines);
+	displayValues(values, labels);
 }
 
-function displayValues (values) {
+function displayValues (values, labels) {
 	const combinations = getCombinations(values);
-	displayCombinations(combinations);
+	displayCombinations(combinations, labels);
 }
 
-function buildCombinationTable (combinations) {
+function buildCombinationTable (combinations, labels) {
 	const table = document.createElement('table');
 	table.classList.add('table');
 	table.classList.add('table-bordered');
 	table.classList.add('table-hover');
+	let showHead = false;
+	const head = document.createElement('thead');
+	let row = document.createElement('tr');
+	head.appendChild(row);
+	for (let label of labels) {
+		let th = document.createElement('th');
+		if (label) {
+			showHead = true;
+			th.textContent = label;
+		}
+		row.appendChild(th);
+	}
+	if (showHead) {
+		table.appendChild(head);
+	}
 	const body = document.createElement('tbody');
 	table.appendChild(body);
 	for (let combination of combinations) {
@@ -107,9 +146,9 @@ function buildCombinationTable (combinations) {
 	return table;
 }
 
-function displayCombinations (combinations) {
+function displayCombinations (combinations, labels) {
 	emptyOutput();
-	const table = buildCombinationTable(combinations);
+	const table = buildCombinationTable(combinations, labels);
 	outputElement.appendChild(table);
 }
 
