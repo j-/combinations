@@ -123,6 +123,16 @@ function resetOutput () {
 	displayInput(input);
 }
 
+function saveInput (input) {
+	localStorage.setItem(LOCAL_STORAGE_KEY, input);
+}
+
+function setInput (input) {
+	inputElement.value = input;
+	saveInput(input);
+	resetOutput();
+}
+
 formElement.addEventListener('submit', function (e) {
 	e.preventDefault();
 	resetOutput();
@@ -132,12 +142,11 @@ const LOCAL_STORAGE_KEY = 'combinations-input';
 const storedInputValue = localStorage.getItem(LOCAL_STORAGE_KEY);
 
 if (storedInputValue) {
-	inputElement.value = storedInputValue;
-	resetOutput();
+	setInput(storedInputValue);
 }
 
 inputElement.addEventListener('input', function () {
-	localStorage.setItem(LOCAL_STORAGE_KEY, inputElement.value);
+	saveInput(inputElement.value);
 });
 
 })();
