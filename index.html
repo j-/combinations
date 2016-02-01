@@ -118,10 +118,26 @@ function emptyOutput () {
 	empty(outputElement);
 }
 
-formElement.addEventListener('submit', function (e) {
-	e.preventDefault();
+function resetOutput () {
 	const input = getInput();
 	displayInput(input);
+}
+
+formElement.addEventListener('submit', function (e) {
+	e.preventDefault();
+	resetOutput();
+});
+
+const LOCAL_STORAGE_KEY = 'combinations-input';
+const storedInputValue = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+if (storedInputValue) {
+	inputElement.value = storedInputValue;
+	resetOutput();
+}
+
+inputElement.addEventListener('input', function () {
+	localStorage.setItem(LOCAL_STORAGE_KEY, inputElement.value);
 });
 
 })();
