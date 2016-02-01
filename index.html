@@ -15,8 +15,13 @@
 			<textarea id="input" class="form-control"></textarea>
 		</div>
 		<div class="form-group">
-			<button type="submit" class="btn btn-primary">Get combinations</button>
-			<button id="load-example-1" type="button" class="btn btn-link">Simple example</button>
+			<div class="pull-left">
+				<button id="load-example-1" type="button" class="btn btn-link">Simple example</button>
+				<button id="load-example-2" type="button" class="btn btn-link">Example testing scenarios</button>
+			</div>
+			<div class="pull-right">
+				<button type="submit" class="btn btn-primary">Get combinations</button>
+			</div>
 		</div>
 	</form>
 
@@ -153,6 +158,11 @@ inputElement.addEventListener('input', function () {
 document.getElementById('load-example-1').addEventListener('click', function (e) {
 	e.preventDefault();
 	setInput('A, B, C\nD, E\nF, G, H');
+});
+
+document.getElementById('load-example-2').addEventListener('click', function (e) {
+	e.preventDefault();
+	setInput('Number value negative, Number value zero, Number value positive\nTextarea value empty string, Textarea value "foobar"\nCheckbox checked, Checkbox unchecked\nClick submit button');
 });
 
 })();
