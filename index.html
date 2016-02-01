@@ -16,6 +16,7 @@
 		</div>
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary">Get combinations</button>
+			<button id="load-example-1" type="button" class="btn btn-link">Simple example</button>
 		</div>
 	</form>
 
@@ -147,6 +148,11 @@ if (storedInputValue) {
 
 inputElement.addEventListener('input', function () {
 	saveInput(inputElement.value);
+});
+
+document.getElementById('load-example-1').addEventListener('click', function (e) {
+	e.preventDefault();
+	setInput('A, B, C\nD, E\nF, G, H');
 });
 
 })();
