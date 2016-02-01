@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<title>Combinations</title>
+
+<div class="container">
+
+	<div class="page-header">
+		<h1 class="title">Combinations</h1>
+	</div>
+
+	<form id="config" class="panel panel-body panel-default">
+		<p>Separate <em>sets</em> with <strong>new lines</strong>. Separate <em>items</em> with <strong>commas</strong>.</p>
+		<div class="form-group">
+			<textarea id="input" class="form-control"></textarea>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Get combinations</button>
+		</div>
+	</form>
+
+	<hr>
+
+	<div id="output"></div>
+
+</div>
+
+<script>
+(function () {
+
+'use strict';
+
+const EXP_DELIMITER_DIMENSIONS = /(?:\r?\n)+/g;
+const EXP_DELIMITER_ITEMS = /,\s*/g;
+
+const formElement = document.getElementById('config');
+const inputElement = document.getElementById('input');
+const outputElement = document.getElementById('output');
+
+function filterOutEmpty (value) {
+	return !!value;
+}
+
+function getInput () {
+	return inputElement.value;
+}
+
+function getValuesFromLine (line) {
+	return line.split(EXP_DELIMITER_ITEMS).filter(filterOutEmpty);
+}
+
+function getValuesFromInput (input) {
+	const lines = input.split(EXP_DELIMITER_DIMENSIONS).filter(filterOutEmpty);
+	return lines.map(getValuesFromLine);
+}
+
+function arrayConcat (a, b) {
+	return a.concat(b);
+}
+
+function arrayProduct (sets) {
+	return sets.reduce((left, right) => {
+		return left.map((a) => {
+			return right.map((b) => {
+				return a.concat([b]);
+			});
+		}).reduce(arrayConcat);
+	}, [[]]);
+}
+
+function getCombinations (values) {
+	return arrayProduct(values);
+}
+
+function displayInput (input) {
+	const values = getValuesFromInput(input);
+	displayValues(values);
+}
+
+function displayValues (values) {
+	const combinations = getCombinations(values);
+	displayCombinations(combinations);
+}
+
+function buildCombinationTable (combinations) {
+	const table = document.createElement('table');
+	table.classList.add('table');
+	table.classList.add('table-bordered');
+	table.classList.add('table-hover');
+	const body = document.createElement('tbody');
+	table.appendChild(body);
+	for (let combination of combinations) {
+		let row = document.createElement('tr');
+		for (let value of combination) {
+			let cell = document.createElement('td');
+			cell.textContent = value;
+			row.appendChild(cell);
+		}
+		body.appendChild(row);
+	}
+	return table;
+}
+
+function displayCombinations (combinations) {
+	emptyOutput();
+	const table = buildCombinationTable(combinations);
+	outputElement.appendChild(table);
+}
+
+function empty (element) {
+	let child;
+	while (child = element.firstChild) {
+		element.removeChild(child);
+	}
+}
+
+function emptyOutput () {
+	empty(outputElement);
+}
+
+formElement.addEventListener('submit', function (e) {
+	e.preventDefault();
+	const input = getInput();
+	displayInput(input);
+});
+
+})();
+</script>
+
+<link rel="stylesheet" href="bootstrap.min.css">
+
+<style>
+#input {
+	min-height: 10em;
+	resize: vertical;
+}
+</style>
