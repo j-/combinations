@@ -1,0 +1,24 @@
+{
+  "name": "combinations",
+  "version": "1.0.0",
+  "description": "Get each possible combination from all given inputs",
+  "main": "dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-/combinations.git"
+  },
+  "keywords": [
+    "combinations",
+    "permutations",
+    "product"
+  ],
+  "author": "Jamie Hoeks <j@skeoh.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/j-/combinations/issues"
+  },
+  "homepage": "https://github.com/j-/combinations#readme"
+}
