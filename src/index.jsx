@@ -1,5 +1,6 @@
 import parseInput from './parse-input';
 import arrayProduct from './utils/array-product';
+import { loadState, saveState } from './local-storage';
 
 const formElement = document.getElementById('config');
 const inputElement = document.getElementById('input');
@@ -81,13 +82,9 @@ function resetOutput () {
 	displayInput(input);
 }
 
-function saveInput (input) {
-	localStorage.setItem(LOCAL_STORAGE_KEY, input);
-}
-
 function setInput (input) {
 	inputElement.value = input;
-	saveInput(input);
+	saveState(input);
 	resetOutput();
 }
 
@@ -96,8 +93,7 @@ formElement.addEventListener('submit', function (e) {
 	resetOutput();
 });
 
-const LOCAL_STORAGE_KEY = 'combinations-input';
-const storedInputValue = localStorage.getItem(LOCAL_STORAGE_KEY);
+const storedInputValue = loadState();
 
 if (storedInputValue) {
 	setInput(storedInputValue);
