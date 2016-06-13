@@ -25,7 +25,7 @@ export default ({ input, lines, updateInput, getCombinations, loadExample }) => 
 			<h1 className="title">Combinations</h1>
 		</div>
 
-		<form id="config" className="panel panel-body panel-default" onSubmit={ (e) => e.preventDefault() }>
+		<form className="panel panel-body panel-default" onSubmit={ (e) => e.preventDefault() }>
 			<p>Separate <em>sets</em> with <strong>new lines</strong>. Separate <em>items</em> with <strong>commas</strong>.</p>
 			<div className="form-group">
 				<textarea
@@ -37,8 +37,8 @@ export default ({ input, lines, updateInput, getCombinations, loadExample }) => 
 			</div>
 			<div className="form-group">
 				<div className="pull-left">
-					<button id="load-example-1" type="button" className="btn btn-link" onClick={ () => loadExample(EXAMPLE_SIMPLE) }>Simple example</button>
-					<button id="load-example-2" type="button" className="btn btn-link" onClick={ () => loadExample(EXAMPLE_COMPLEX) }>Example testing scenarios</button>
+					<button type="button" className="btn btn-link" onClick={ () => loadExample(EXAMPLE_SIMPLE) }>Simple example</button>
+					<button type="button" className="btn btn-link" onClick={ () => loadExample(EXAMPLE_COMPLEX) }>Example testing scenarios</button>
 				</div>
 				<div className="pull-right">
 					<button type="submit" className="btn btn-primary" onClick={ getCombinations }>Get combinations</button>
