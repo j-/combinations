@@ -1,49 +1,12 @@
+import parseInput from './parse-input';
 import arrayProduct from './utils/array-product';
-
-const EXP_LABEL = /^([^,]+)\s*:\s*/;
-const EXP_DELIMITER_DIMENSIONS = /(?:\r?\n)+/g;
-const EXP_DELIMITER_ITEMS = /,\s*/g;
 
 const formElement = document.getElementById('config');
 const inputElement = document.getElementById('input');
 const outputElement = document.getElementById('output');
 
-function filterOutEmpty (value) {
-	return !!value;
-}
-
 function getInput () {
 	return inputElement.value;
-}
-
-function getLinesFromInput (input) {
-	return input
-		.split(EXP_DELIMITER_DIMENSIONS)
-		.filter(filterOutEmpty);
-}
-
-function getValuesFromLine (line) {
-	return line
-		.split(EXP_LABEL)
-		.pop()
-		.split(EXP_DELIMITER_ITEMS)
-		.filter(filterOutEmpty);
-}
-
-function getLabelFromLine (line) {
-	const match = line.match(EXP_LABEL);
-	if (!match) {
-		return null;
-	}
-	return match[1];
-}
-
-function getValuesFromLines (lines) {
-	return lines.map(getValuesFromLine);
-}
-
-function getLabelsFromLines (lines) {
-	return lines.map(getLabelFromLine);
 }
 
 function getCombinations (values) {
@@ -51,13 +14,13 @@ function getCombinations (values) {
 }
 
 function displayInput (input) {
-	const lines = getLinesFromInput(input);
-	const values = getValuesFromLines(lines);
-	const labels = getLabelsFromLines(lines);
-	displayValues(values, labels);
+	const state = parseInput(input);
+	displayState(state);
 }
 
-function displayValues (values, labels) {
+function displayState (state) {
+	const values = state.map(line => line.values);
+	const labels = state.map(line => line.label);
 	const combinations = getCombinations(values);
 	displayCombinations(combinations, labels);
 }
