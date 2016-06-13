@@ -14,6 +14,6 @@ export const getCombinations = () => ({
 });
 
 export const loadExample = (input) => ({
-	type: UPDATE_INPUT,
+	type: LOAD_EXAMPLE,
 	input,
 });
