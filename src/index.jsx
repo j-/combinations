@@ -1,3 +1,5 @@
+import arrayProduct from './utils/array-product';
+
 const EXP_LABEL = /^([^,]+)\s*:\s*/;
 const EXP_DELIMITER_DIMENSIONS = /(?:\r?\n)+/g;
 const EXP_DELIMITER_ITEMS = /,\s*/g;
@@ -42,20 +44,6 @@ function getValuesFromLines (lines) {
 
 function getLabelsFromLines (lines) {
 	return lines.map(getLabelFromLine);
-}
-
-function arrayConcat (a, b) {
-	return a.concat(b);
-}
-
-function arrayProduct (sets) {
-	return sets.reduce((left, right) => {
-		return left.map((a) => {
-			return right.map((b) => {
-				return a.concat([b]);
-			});
-		}).reduce(arrayConcat);
-	}, [[]]);
 }
 
 function getCombinations (values) {
