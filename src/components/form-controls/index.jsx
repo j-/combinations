@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import ExampleButtons from '../example-buttons/container';
+import ExampleButtons from '../example-buttons';
 
 const cancel = (e) => e.preventDefault();
 

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ExampleButton from '../example-button/container';
 
 const EXAMPLE_SIMPLE = `
 
@@ -19,13 +20,13 @@ Submit button: clicked
 
 const ExampleButtons = ({ loadExample }) => (
 	<div>
-		<button type="button" className="btn btn-link" onClick={ () => loadExample(EXAMPLE_SIMPLE) }>Simple example</button>
-		<button type="button" className="btn btn-link" onClick={ () => loadExample(EXAMPLE_COMPLEX) }>Example testing scenarios</button>
+		<ExampleButton exampleInput={ EXAMPLE_SIMPLE }>
+			Simple example
+		</ExampleButton>
+		<ExampleButton exampleInput={ EXAMPLE_COMPLEX }>
+			Example testing scenarios
+		</ExampleButton>
 	</div>
 );
-
-ExampleButtons.propTypes = {
-	loadExample: PropTypes.func.isRequired,
-};
 
 export default ExampleButtons;
