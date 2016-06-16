@@ -1,14 +1,13 @@
-import App from './';
+import FormControls from './';
 import { connect } from 'react-redux';
+import { getInput } from '../../reducers';
 import * as actions from '../../reducers/actions';
-import { getInput, getLines } from '../../reducers';
 
 const mapStateToProps = (state) => ({
 	input: getInput(state),
-	lines: getLines(state),
 });
 
 export default connect(
 	mapStateToProps,
 	actions
-)(App);
+)(FormControls);
