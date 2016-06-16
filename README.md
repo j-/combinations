@@ -6,14 +6,14 @@
 Takes an input like this...
 
 ```
-A, B, C
-D, E
-F, G, H
+X: A, B, C
+Y: D, E
+Z: F, G, H
 ```
 
 ...and produces an output like this
 
-|   |   |   |
+| X | Y | Z |
 |---|---|---|
 | A | D | F |
 | A | D | G |
