@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const EXAMPLE_SIMPLE = `
 
@@ -23,5 +23,9 @@ const ExampleButtons = ({ loadExample }) => (
 		<button type="button" className="btn btn-link" onClick={ () => loadExample(EXAMPLE_COMPLEX) }>Example testing scenarios</button>
 	</div>
 );
+
+ExampleButtons.propTypes = {
+	loadExample: PropTypes.func.isRequired,
+};
 
 export default ExampleButtons;

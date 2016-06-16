@@ -42,10 +42,12 @@ const Output = ({ lines }) => {
 }
 
 Output.propTypes = {
-	lines: PropTypes.arrayOf(PropTypes.shape({
-		label: PropTypes.string,
-		values: PropTypes.arrayOf(PropTypes.string).isRequired,
-	})).isRequired,
+	lines: PropTypes.arrayOf(
+		PropTypes.shape({
+			label: PropTypes.string,
+			values: PropTypes.arrayOf(PropTypes.string).isRequired,
+		})
+	).isRequired,
 };
 
 export default Output;

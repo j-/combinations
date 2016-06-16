@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ExampleButtons from '../example-buttons/container';
 
 const cancel = (e) => e.preventDefault();
@@ -50,5 +50,14 @@ const FormControls = ({
 		</div>
 	</form>
 );
+
+FormControls.propTypes = {
+	input: PropTypes.string,
+	canGetCombinations: PropTypes.bool,
+	updateInput: PropTypes.func.isRequired,
+	loadExample: PropTypes.func.isRequired,
+	getCombinations: PropTypes.func.isRequired,
+	clear: PropTypes.func.isRequired,
+};
 
 export default FormControls;
