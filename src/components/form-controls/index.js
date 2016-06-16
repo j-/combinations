@@ -1,4 +1,4 @@
-import FormControls from './';
+import FormControls from './form-controls';
 import { connect } from 'react-redux';
 import { getInput } from '../../reducers';
 import * as actions from '../../reducers/actions';
@@ -11,7 +11,9 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(
+const FormControlsContainer = connect(
 	mapStateToProps,
 	actions
 )(FormControls);
+
+export default FormControlsContainer;

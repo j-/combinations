@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import ExampleButton from '../example-button/container';
+import ExampleButton from '../example-button';
 
 const EXAMPLE_SIMPLE = `
 

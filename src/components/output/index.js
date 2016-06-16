@@ -1,4 +1,4 @@
-import Output from './';
+import Output from './output';
 import { connect } from 'react-redux';
 import { getLines } from '../../reducers';
 
@@ -6,6 +6,8 @@ const mapStateToProps = (state) => ({
 	lines: getLines(state),
 });
 
-export default connect(
+const OutputContainer = connect(
 	mapStateToProps
 )(Output);
+
+export default OutputContainer;
