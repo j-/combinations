@@ -5,7 +5,10 @@ const tableClassList = 'table table-condensed table-bordered table-highlight';
 
 export default class Output extends Component {
 	static propTypes = {
-		lines: PropTypes.array.isRequired,
+		lines: PropTypes.arrayOf(PropTypes.shape({
+			label: PropTypes.string,
+			values: PropTypes.arrayOf(PropTypes.string).isRequired,
+		})).isRequired,
 	}
 
 	render () {
