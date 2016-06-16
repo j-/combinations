@@ -1,6 +1,8 @@
 import React from 'react';
 import ExampleButtons from '../example-buttons/container';
 
+const cancel = (e) => e.preventDefault();
+
 export default ({
 	// Props
 	input,
@@ -11,7 +13,7 @@ export default ({
 	getCombinations,
 	clear,
 }) => (
-	<form className="panel panel-body panel-default" onSubmit={ (e) => e.preventDefault() }>
+	<form className="panel panel-body panel-default" onSubmit={ cancel }>
 		<p>Separate <em>sets</em> with <strong>new lines</strong>. Separate <em>items</em> with <strong>commas</strong>.</p>
 		<div className="form-group">
 			<textarea
