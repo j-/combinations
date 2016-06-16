@@ -9,7 +9,6 @@ const FormControls = ({
 	canGetCombinations,
 	// Actions
 	updateInput,
-	loadExample,
 	getCombinations,
 	clear,
 }) => (
@@ -55,7 +54,6 @@ FormControls.propTypes = {
 	input: PropTypes.string,
 	canGetCombinations: PropTypes.bool,
 	updateInput: PropTypes.func.isRequired,
-	loadExample: PropTypes.func.isRequired,
 	getCombinations: PropTypes.func.isRequired,
 	clear: PropTypes.func.isRequired,
 };
