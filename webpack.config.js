@@ -52,7 +52,7 @@ module.exports = {
 			},
 		}),
 		new webpack.DefinePlugin({
-			'__DEV__': JSON.stringify(Boolean(production)),
+			'__DEV__': JSON.stringify(!production),
 		}),
 	],
 };
