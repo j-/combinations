@@ -1,4 +1,7 @@
 const path = require('path');
+const webpack = require('webpack');
+
+const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
 	entry: {
@@ -42,4 +45,14 @@ module.exports = {
 		],
 	},
 	devtool: 'source-map',
+	plugins: [
+		new webpack.DefinePlugin({
+			'process.env': {
+				'NODE_ENV': JSON.stringify('production'),
+			},
+		}),
+		new webpack.DefinePlugin({
+			'__DEV__': JSON.stringify(Boolean(production)),
+		}),
+	],
 };
