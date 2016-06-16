@@ -41,7 +41,7 @@ export default ({ input, lines, updateInput, getCombinations, loadExample }) => 
 					<button type="button" className="btn btn-link" onClick={ () => loadExample(EXAMPLE_COMPLEX) }>Example testing scenarios</button>
 				</div>
 				<div className="pull-right">
-					<button type="submit" className="btn btn-primary" onClick={ getCombinations }>Get combinations</button>
+					<button type="submit" className="btn btn-primary" onClick={ () => getCombinations(input) }>Get combinations</button>
 				</div>
 			</div>
 		</form>

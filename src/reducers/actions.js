@@ -9,8 +9,9 @@ export const updateInput = (input) => ({
 	input,
 });
 
-export const getCombinations = () => ({
+export const getCombinations = (input) => ({
 	type: GET_COMBINATIONS,
+	input,
 });
 
 export const loadExample = (input) => ({
