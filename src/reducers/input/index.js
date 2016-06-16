@@ -1,6 +1,7 @@
 import {
 	UPDATE_INPUT,
 	LOAD_EXAMPLE,
+	CLEAR,
 } from '../types';
 
 export default (state = '', action) => {
@@ -8,6 +9,8 @@ export default (state = '', action) => {
 		case UPDATE_INPUT:
 		case LOAD_EXAMPLE:
 			return action.input;
+		case CLEAR:
+			return '';
 		default:
 			return state;
 	}
