@@ -4,6 +4,11 @@ import { Provider } from 'react-redux';
 import App from './components/app';
 import createStore from './create-store';
 import { loadState, saveState } from './local-storage';
+import { whyDidYouUpdate } from 'why-did-you-update';
+
+if (__DEV__) {
+	whyDidYouUpdate(React);
+}
 
 const store = window.store = createStore(loadState());
 
