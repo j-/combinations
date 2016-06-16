@@ -3,7 +3,7 @@ import Output from '../output/container';
 import PageHeader from '../page-header';
 import FormControls from '../form-controls/container';
 
-export default () => (
+const App = () => (
 	<div className="container">
 		<PageHeader />
 		<FormControls />
@@ -13,3 +13,5 @@ export default () => (
 		<Output />
 	</div>
 );
+
+export default App;

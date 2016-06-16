@@ -3,7 +3,7 @@ import ExampleButtons from '../example-buttons/container';
 
 const cancel = (e) => e.preventDefault();
 
-export default ({
+const FormControls = ({
 	// Props
 	input,
 	canGetCombinations,
@@ -50,3 +50,5 @@ export default ({
 		</div>
 	</form>
 );
+
+export default FormControls;

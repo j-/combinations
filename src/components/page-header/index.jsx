@@ -3,7 +3,7 @@ import React from 'react';
 const HEADER_URL = 'https://github.com/j-/combinations';
 const HEADER_TITLE = 'Check out the source on GitHub';
 
-export default () => (
+const PageHeader = () => (
 	<div className="page-header">
 		<h1 className="title">
 			<a href={ HEADER_URL } title={ HEADER_TITLE }>
@@ -12,3 +12,5 @@ export default () => (
 		</h1>
 	</div>
 );
+
+export default PageHeader;

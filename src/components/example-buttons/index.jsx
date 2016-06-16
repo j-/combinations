@@ -17,9 +17,11 @@ Submit button: clicked
 
 `.trim();
 
-export default ({ loadExample }) => (
+const ExampleButtons = ({ loadExample }) => (
 	<div>
 		<button type="button" className="btn btn-link" onClick={ () => loadExample(EXAMPLE_SIMPLE) }>Simple example</button>
 		<button type="button" className="btn btn-link" onClick={ () => loadExample(EXAMPLE_COMPLEX) }>Example testing scenarios</button>
 	</div>
 );
+
+export default ExampleButtons;
