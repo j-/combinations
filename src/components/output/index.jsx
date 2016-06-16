@@ -14,10 +14,15 @@ export default class Output extends Component {
 	render () {
 		const { lines } = this.props;
 		const values = lines.map(line => line.values);
-		const labels = lines.map(line => line.label);
 		const combinations = arrayProduct(values);
-		const hasLabels = lines.some(line => line.label);
 		const hasValues = combinations.length > 0;
+
+		if (!hasValues) {
+			return null;
+		}
+
+		const labels = lines.map(line => line.label);
+		const hasLabels = lines.some(line => line.label);
 
 		const thead = hasLabels && <thead>
 			<tr>
@@ -27,7 +32,7 @@ export default class Output extends Component {
 			</tr>
 		</thead>;
 
-		const tbody = hasValues && <tbody>
+		const tbody = <tbody>
 			{ combinations.map((values, i) =>
 				<tr key={ i }>
 					{ values.map((value, i) =>
@@ -37,7 +42,7 @@ export default class Output extends Component {
 			) }
 		</tbody>;
 
-		const table = hasValues && <table className={ tableClassList }>
+		const table = <table className={ tableClassList }>
 			{ thead }
 			{ tbody }
 		</table>;
