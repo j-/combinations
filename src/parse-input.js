@@ -6,7 +6,7 @@ export const getLinesFromInput = (input) => {
 		.filter(Boolean);
 };
 
-export const EXP_LABEL = /^([^,]+)\s*:\s*/;
+export const EXP_LABEL = /^([^,:]+?)\s*:\s*/;
 
 export const getLabelFromLine = (line) => {
 	const match = line.match(EXP_LABEL);
