@@ -1,6 +1,6 @@
 {
   "name": "combinations",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Get each possible combination from all given inputs",
   "main": "dist/index.html",
   "scripts": {
