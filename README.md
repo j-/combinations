@@ -1,6 +1,8 @@
 [Combinations][site-url]
 ========================
 
+[![Screenshot](screenshot.png)][site-url]
+
 ## What?
 
 Takes an input like this...
