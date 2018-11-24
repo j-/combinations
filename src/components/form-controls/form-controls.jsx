@@ -12,7 +12,7 @@ const FormControls = ({
 	getCombinations,
 	clear,
 }) => (
-	<form className="panel panel-body panel-default" onSubmit={ cancel }>
+	<form className="card card-body mt-5 mb-5" onSubmit={ cancel }>
 		<p>Separate <em>sets</em> with <strong>new lines</strong>. Separate <em>items</em> with <strong>commas</strong>.</p>
 		<div className="form-group">
 			<textarea
@@ -23,10 +23,10 @@ const FormControls = ({
 			/>
 		</div>
 		<div className="form-group">
-			<div className="pull-left">
+			<div className="float-left">
 				<ExampleButtons />
 			</div>
-			<div className="pull-right">
+			<div className="float-right">
 				<button
 					type="button"
 					className="btn btn-default"

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import arrayProduct from '../../utils/array-product';
 
-const tableClassList = 'table table-condensed table-bordered table-highlight';
+const tableClassList = 'table table-sm table-bordered table-hover mt-5 mb-5';
 
 const Output = ({ lines }) => {
 	const values = lines.map(line => line.values);
