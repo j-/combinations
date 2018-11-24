@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --inline --content-base dist/ --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "npm run build:prod",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
